@@ -6,7 +6,7 @@ function List() {
     <h2>Characters</h2>;
     <Character />
     <Character />
-    <Character />
+  
   </div>;
 }
 
