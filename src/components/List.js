@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Character from "./Character";
 import "./List.css";
 
-function List() {
+function List({ pattern }) {
   const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(true);
   console.log(characters);
@@ -29,16 +29,22 @@ function List() {
         {loading ? (
           <div className="">Loading</div>
         ) : (
-          characters.map((character) => {
-            return (
-              <Character
-                key={character.id}
-                name={character.name}
-                origin={character.origin}
-                image={character.image}
-              />
-            );
-          })
+          characters
+            .filter((character) => {
+              return pattern.toLowerCase() === ""
+                ? character
+                : character.name.toLowerCase().includes(pattern);
+            })
+            .map((character) => {
+              return (
+                <Character
+                  key={character.id}
+                  name={character.name}
+                  origin={character.origin}
+                  image={character.image}
+                />
+              );
+            })
         )}
       </div>
     </div>

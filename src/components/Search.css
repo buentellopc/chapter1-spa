@@ -1,0 +1,36 @@
+.search-form {
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+.search-form__button {
+  height: 20px;
+  width: 20px;
+  background-color: #323a42e0;
+  background-image: url("https://img.icons8.com/android/24/ffffff/search.png");
+  background-size: 14px;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  /* padding: 10px; */
+  margin-left: -20px;
+  cursor: pointer;
+}
+
+.search-form__button:hover {
+  background-color: white;
+  background-image: url("https://img.icons8.com/android/24/323a42/search.png");
+  border-left: 1px solid var(--primary-color);
+}
+
+.search-form__wrapper {
+  display: flex;
+  /* border: 1px solid red; */
+  /* align-content: center; */
+}
+
+.search-form__wrapper input {
+  border: none;
+  outline: none;
+}
