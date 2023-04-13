@@ -5,7 +5,9 @@ import List from "./components/List";
 function App() {
   return (
     <div>
-      <h1>Rick and Morty</h1>
+      <header className="header">
+        <h1 className="header__title">Rick and Morty</h1>
+      </header>
       <List />
     </div>
   );

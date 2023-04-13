@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Character from "./Character";
+import "./List.css";
 
 function List() {
   const [characters, setCharacters] = useState([]);
@@ -23,21 +24,23 @@ function List() {
 
   return (
     <div>
-      <h2>Characters</h2>
-      {loading ? (
-        <div>Loading</div>
-      ) : (
-        characters.map((character) => {
-          return (
-            <Character
-              key={character.id}
-              name={character.name}
-              origin={character.origin}
-              image={character.image}
-            />
-          );
-        })
-      )}
+      <h2 className="list__title">Characters</h2>
+      <div className="list__content">
+        {loading ? (
+          <div className="">Loading</div>
+        ) : (
+          characters.map((character) => {
+            return (
+              <Character
+                key={character.id}
+                name={character.name}
+                origin={character.origin}
+                image={character.image}
+              />
+            );
+          })
+        )}
+      </div>
     </div>
   );
 }

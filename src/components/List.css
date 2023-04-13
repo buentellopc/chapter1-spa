@@ -1,0 +1,11 @@
+.list__title {
+  text-align: center;
+  font-family: var(--roboto);
+}
+
+.list__content {
+  display: grid;
+  place-content: center;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 300px));
+}
