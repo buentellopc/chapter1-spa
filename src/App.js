@@ -2,7 +2,6 @@ import logo from "./logo.svg";
 import "./App.css";
 import List from "./components/List";
 import Search from "./components/Search";
-import ParentSearch from "./components/ParentSearch";
 import { useState } from "react";
 import InfiniteScroll from "./components/InfinetScroll";
 
