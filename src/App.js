@@ -19,7 +19,6 @@ function App() {
         <Search pattern={pattern} patternHandler={patternHandler} />
       </header>
       <List pattern={pattern} />
-      {/* <InfiniteScroll /> */}
     </div>
   );
 }
