@@ -4,6 +4,7 @@ import List from "./components/List";
 import Search from "./components/Search";
 import ParentSearch from "./components/ParentSearch";
 import { useState } from "react";
+import InfiniteScroll from "./components/InfinetScroll";
 
 function App() {
   const [pattern, setPattern] = useState("");
@@ -19,6 +20,7 @@ function App() {
         <Search pattern={pattern} patternHandler={patternHandler} />
       </header>
       <List pattern={pattern} />
+      {/* <InfiniteScroll /> */}
     </div>
   );
 }

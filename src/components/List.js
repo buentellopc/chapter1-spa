@@ -5,29 +5,54 @@ import "./List.css";
 function List({ pattern }) {
   const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(true);
-  console.log(characters);
-  console.log(characters.length);
-  console.log("helloooo");
+  const [loadingMore, setLoadingMore] = useState(false);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     async function fetchData() {
-      const data = await fetch("https://rickandmortyapi.com/api/character");
+      const data = await fetch(
+        `https://rickandmortyapi.com/api/character?page=${page}`
+      );
       const { results } = await data.json();
-      setCharacters(results);
+      setCharacters((previous) => {
+        return [...previous, ...results];
+      });
       setLoading(false);
+      setLoadingMore(false);
+      console.log("loadingMore fetch", loadingMore);
     }
 
-    fetchData();
-  }, [characters.length]);
+    setTimeout(fetchData, 1200);
+  }, [page]);
 
   console.log(characters.length);
+
+  const handleScroll = () => {
+    const scrollHeight = document.documentElement.scrollHeight;
+    const scrollTop = document.documentElement.scrollTop;
+    const windowHeight = window.innerHeight;
+
+    if (windowHeight + scrollTop + 1 >= scrollHeight) {
+      setLoadingMore(true);
+      setPage((previous) => previous + 1);
+      console.log("loadingMore scroll", loadingMore);
+    }
+  };
+
+  useEffect(() => {
+    // loadCharacters();
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <div>
       <h2 className="list__title">Characters</h2>
       <div className="list__content">
         {loading ? (
-          <div className="">Loading</div>
+          <div>Loading...</div>
         ) : (
           characters
             .filter((character) => {
@@ -47,6 +72,14 @@ function List({ pattern }) {
             })
         )}
       </div>
+      {loadingMore && (
+        <div class="lds-ring">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      )}
     </div>
   );
 }
