@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Character from "./Character";
-import axios from "axios";
+// import Character from "./Character";
+// import axios from "axios";
 
 const InfiniteScroll = () => {
   const [characters, setCharacters] = useState([]);
